@@ -1,2 +1,2 @@
-# SecurityCameraApp_AJ
+# SecurityCameraApp_MJ
 Generic infrastructure for smart cctv system
