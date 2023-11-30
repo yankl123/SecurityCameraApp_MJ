@@ -1,0 +1,77 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.iobg
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.exe.*
+
+# more...
+*.pdb
+*.db 
+v16
+v16/
+v17
+v17/
+
+# folders
+Debug
+Debug/
+Releas
+Releas/
+build
+build/
+build*/
+build/*
+build*/*
+build-debug
+build-debug/
+wsl
+wsl/
+
+!bootcamp_project/build/BUILDME.txt
+
+boost.1.83.0/
+boost.1.83.0
+x64
+.vs
+.vs/
+.vscode
+.vscode/
+FileContentIndex
+FileContentIndex/
+
+*.config
+*.xml
+*.csv
+
+# releas
+*.tlog*
+*.log
