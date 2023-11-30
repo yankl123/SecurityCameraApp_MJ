@@ -18,7 +18,7 @@ endif()
 add_subdirectory(backend_lib)
 add_subdirectory(sqlite)
 
-add_executable(${PROJECT_NAME} backend_runner.cc) 
+add_executable(${PROJECT_NAME} backend_runner.cpp) 
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     backend_lib
