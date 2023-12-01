@@ -17,7 +17,7 @@ endif()
 
 add_subdirectory(camera_lib)
 
-add_executable(${PROJECT_NAME} camera_runner.cc) 
+add_executable(${PROJECT_NAME} camera_runner.cpp) 
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     camera_lib
