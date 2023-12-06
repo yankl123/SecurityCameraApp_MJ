@@ -1,13 +1,12 @@
 #pragma once
 
 #include <iostream>
-#include <opencv2/opencv.hpp>
 #include "JQueue.h"
 #include "Logger/Logger.h"
 #include "Database/DatabaseManager.h"
 #include "Detection.h"
 #include "Semaphore.h"
-
+#include <opencv2/opencv.hpp>
 #include <fstream>
  
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sqlite3.h>
+#include <sqlite3.h> 
 #include <string>
 #include <opencv2/opencv.hpp>
-#include "../Logger/Logger.h"
+#include "Logger.h"
 
 class BackendProcessor; // Forward declaration
 

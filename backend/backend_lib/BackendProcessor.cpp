@@ -1,10 +1,6 @@
 
 #include "BackendProcessor.h"
 
-
-
- 
-
 BackendProcessor::BackendProcessor(const std::string& outputCSV, const std::string& dbPath, const std::string& videoFileName )
     : dbPath(dbPath), videoFileName(videoFileName)  {
 
@@ -16,7 +12,7 @@ BackendProcessor::BackendProcessor(const std::string& outputCSV, const std::stri
     outputFile.open(outputCSV);
     if (!outputFile.is_open()) {
         //std::cout << "Error: Could not open the CSV file '" << outputCSV << "'." << std::endl;
-        LOG_ERROR("Could not open the CSV file '{}'.", outputCSV);
+        //LOG_ERROR("Could not open the CSV file '{}'.", outputCSV);
     }
     else {
         outputFile << "Time,Top,Left,Width,Height,AvgR,AvgG,AvgB" << std::endl;
@@ -91,10 +87,10 @@ void BackendProcessor::start() {
 
 void BackendProcessor::performObjectDetection(cv::Mat& frame) {
     // Log that object detection is starting.
-    LOG_INFO("Performing object detection...");
+    //LOG_INFO("Performing object detection...");
 
     // Log the size of the input frame.
-    LOG_INFO("Frame size: {}x{}", frame.cols, frame.rows);
+    //LOG_INFO("Frame size: {}x{}", frame.cols, frame.rows);
 
     // Display the input frame using OpenCV.
     //imshow("Detected Objects", frame);
@@ -111,7 +107,7 @@ void BackendProcessor::performObjectDetection(cv::Mat& frame) {
 
     // Check if any objects were detected.
     if (detections.empty()) {
-        LOG_ERROR("Error: No objects detected in the frame.");
+        //LOG_ERROR("Error: No objects detected in the frame.");
         return;
     }
 
@@ -120,7 +116,7 @@ void BackendProcessor::performObjectDetection(cv::Mat& frame) {
 
     // Check if any objects were detected after post-processing.
     if (detectedRegions.empty()) {
-        LOG_ERROR("Error: No objects detected in the frame after post-processing.");
+        //LOG_ERROR("Error: No objects detected in the frame after post-processing.");
         return;
     }
 
@@ -144,7 +140,7 @@ void BackendProcessor::performObjectDetection(cv::Mat& frame) {
     }
 
     // Log that frame processing is complete.
-    LOG_INFO("Finished processing frame.");
+    //LOG_INFO("Finished processing frame.");
 }
 
 

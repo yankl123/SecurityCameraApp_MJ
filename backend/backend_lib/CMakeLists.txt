@@ -1,4 +1,4 @@
-project(camera_lib)
+project(backend_lib)
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -12,17 +12,29 @@ if(NOT OpenCV_FOUND)
 endif()
 
 file(GLOB SOURCES 
-    *.c *.cc *.cpp *.h *.hpp 
+    *.cpp *.h *.hpp 
+    Logger/*.cpp Logger/*.hpp Logger/*.h
+    Database/*.cpp Database/*.hpp Database/*.h
 )
-add_library(${PROJECT_NAME} STATIC
-    ${SOURCES}
+file(GLOB Logger_Sources RELATIVE "Logger" 
+    *.cpp *.h *.hpp
+)
+file(GLOB Database_Sources RELATIVE "Database" 
+    *.cpp *.h *.hpp
 )
 
+add_library(${PROJECT_NAME} STATIC
+    ${SOURCES}
+    ${Logger_Sources}
+    ${Database_Sources}
+)
+message(STATUS "******************* ${SOURCES}")
 target_link_libraries(${PROJECT_NAME} PUBLIC
+    sqlite
     spdlog::spdlog
     nlohmann_json::nlohmann_json
-    absl::flags
     image_grpc
+    absl::flags
     absl::flags_parse
 )
 
@@ -40,12 +52,15 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 
 # additional include directories
-target_include_directories(camera_lib PUBLIC 
+target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${OpenCV_INCLUDE_DIRS}
+    ${CMAKE_SOURCE_DIR}/backend/sqlite
     ${CMAKE_SOURCE_DIR}/external_libs/spdlog-1.x/include/spdlog
     ${CMAKE_SOURCE_DIR}/external_libs/image_grpc
-    ${Protobuf_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Logger
+    ${CMAKE_CURRENT_SOURCE_DIR}/Database
 )
-	
+
+target_compile_definitions(backend_lib PRIVATE YOLO_ONNX_PATH=${YOLO_PATH})  	
 

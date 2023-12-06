@@ -2,6 +2,7 @@
 
 #include <grpcpp/grpcpp.h>
 #include "video_service.grpc.pb.h"
+#include "video_service.pb.h"
 #include <opencv2/opencv.hpp>
 #include <iostream>
 

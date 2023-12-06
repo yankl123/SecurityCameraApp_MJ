@@ -36,7 +36,6 @@ elseif(BACKEND_SIDE)
 else()  
     add_subdirectory(backend) 
     add_subdirectory(camera)  
-    
 endif()
 
 if(WITH_TESTS)
