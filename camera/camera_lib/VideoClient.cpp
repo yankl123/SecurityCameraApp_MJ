@@ -7,15 +7,13 @@ using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
 
- using video :: VideoService;
-using video :: Empty;
-using video :: Frame;
+using video::VideoService;
+using video::Empty;
+using video::Frame;
 
  using namespace std;
 
 
- 
- 
  VideoClient:: VideoClient(const std::string& server_address  ) {
         std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel(server_address, grpc::InsecureChannelCredentials());
         stub_ = VideoService::NewStub(channel);

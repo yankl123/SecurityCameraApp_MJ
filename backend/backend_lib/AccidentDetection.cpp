@@ -1,5 +1,5 @@
 #include "AccidentDetection.h"
- 
+
 
 const float MIN_VEHICLE_SPEED = 10.0;  
 const float MAX_COLLISION_DISTANCE = 50.0;  
@@ -11,22 +11,22 @@ AccidentDetection::AccidentDetection(const std::string& videoSource) : capture_(
     }
 }
 
-void AccidentDetection::Run() {
-    cv::Mat frame;
-    std::vector<cv::Rect> prevRects;
-
-    while (capture_.read(frame)) {
-        std::vector<cv::Rect> currentRects = yoloDetector.post_process_to_rects(frame);
-
-        if (!prevRects.empty()) {
-            CheckForAccidents(prevRects, currentRects);
-        }
-        prevRects = currentRects;
-     }
-
-    capture_.release();
-    cv::destroyAllWindows();
-}
+//void AccidentDetection::Run() {
+//    cv::Mat frame;
+//    std::vector<cv::Rect> prevRects;
+//
+//    while (capture_.read(frame)) {
+//        std::vector<cv::Rect> currentRects = yoloDetector.post_process_to_rects(frame);
+//
+//        if (!prevRects.empty()) {
+//            CheckForAccidents(prevRects, currentRects);
+//        }
+//        prevRects = currentRects;
+//     }
+//
+//    capture_.release();
+//    cv::destroyAllWindows();
+//}
 
  
 
@@ -48,12 +48,12 @@ void AccidentDetection::CheckForAccidents(const std::vector<cv::Rect>& prevRects
 float AccidentDetection::CalculateSpeed(const cv::Rect& prevRect, const cv::Rect& currentRect, float timeInSeconds) {
 
 
-    return;
+    return 0 ;
 }
 
 float AccidentDetection::CalculateDistance(const cv::Rect& rect1, const cv::Rect& rect2) {
  
-    return;
+    return 0 ;
 }
 
 bool AccidentDetection::IsPotentialAccident(float speed, float distance) {

@@ -18,7 +18,7 @@ private:
 };
 
 
-#define LOG_INFO(...)    if (Logger::IsLoggingEnabled()) Logger::GetLogger()->info(__VA_ARGS__)
-#define LOG_DEBUG(...)   if (Logger::IsLoggingEnabled()) Logger::GetLogger()->debug(__VA_ARGS__)
-#define LOG_ERROR(...)   if (Logger::IsLoggingEnabled()) Logger::GetLogger()->error(__VA_ARGS__)
-#define LOG_WARN(...)    if (Logger::IsLoggingEnabled()) Logger::GetLogger()->warn(__VA_ARGS__)
+#define LOG_INFO(...)    if(Logger::IsLoggingEnabled()) Logger::GetLogger()->info(__VA_ARGS__)
+#define LOG_DEBUG(...)   if(Logger::IsLoggingEnabled()) Logger::GetLogger()->debug(__VA_ARGS__)
+#define LOG_ERROR(...)   if(Logger::IsLoggingEnabled()) Logger::GetLogger()->error(__VA_ARGS__)
+#define LOG_WARN(...)    if(Logger::IsLoggingEnabled()) Logger::GetLogger()->warn(__VA_ARGS__)

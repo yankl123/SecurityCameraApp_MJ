@@ -25,7 +25,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 # Additional Include Directories
-target_include_directories(${PROJECT_NAME}  PRIVATE 
+target_include_directories(${PROJECT_NAME}  PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/camera_lib
     ${CMAKE_SOURCE_DIR}/external_libs/image_grpc
     ${CMAKE_SOURCE_DIR}/external_libs/spdlog-1.x/include/spdlog

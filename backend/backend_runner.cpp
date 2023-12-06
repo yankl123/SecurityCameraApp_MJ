@@ -1,10 +1,8 @@
-#include <iostream>
+
 #include <thread>
-#include "JQueue.h"
 #include "BackendProcessor.h"
+//#include "VideoServer.cpp"  
 #include "Logger/Logger.h"
-#include "VideoServer.cpp"  
- 
 
 #ifdef _DEBUG
 #pragma comment(lib, "opencv_world480d.lib")
@@ -25,17 +23,17 @@ int main(int argc, char* argv[]) {
     size_t lastSlash = videoPath.find_last_of("/\\");
     std::string videoFileName = (lastSlash != std::string::npos) ? videoPath.substr(lastSlash + 1) : videoPath;
     BackendProcessor backendProcessor(outputCSV, outputDB, videoFileName);
-    LOG_INFO("Starting program...");
-    VideoServer server("0.0.0.0:50051");
-    std::thread serverThread(&VideoServer::run, &server);
+    ////LOG_INFO("Starting program...");
+    //VideoServer server("0.0.0.0:50051");
+    //std::thread serverThread(&VideoServer::run, &server);
     backendProcessor.start();
-    LOG_INFO("Starting backend processing...");
+    ////LOG_INFO("Starting backend processing...");
  
     backendProcessor.start();
-    LOG_INFO("Backend processing finished.");
+    ////LOG_INFO("Backend processing finished.");
  
-    //join
-    serverThread.join();
+    ////join
+    //serverThread.join();
     // Shutdown the logger
     spdlog::shutdown();
 

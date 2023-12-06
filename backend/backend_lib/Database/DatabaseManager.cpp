@@ -18,7 +18,7 @@ DatabaseManager::~DatabaseManager() {
 void DatabaseManager::openDatabase(const std::string& dbPath) {
     int rc = sqlite3_open(dbPath.c_str(), &db);
     if (rc) {
-        LOG_ERROR("Error opening SQLite database: {}", sqlite3_errmsg(db));
+        //LOG_ERROR("Error opening SQLite database: {}", sqlite3_errmsg(db));
         exit(1);
     }
 
@@ -36,7 +36,7 @@ void DatabaseManager::openDatabase(const std::string& dbPath) {
         "avgB REAL);";
     rc = sqlite3_exec(db, createTableSQL, nullptr, nullptr, nullptr);
     if (rc != SQLITE_OK) {
-        LOG_ERROR("Error creating table: {}", sqlite3_errmsg(db));
+        //LOG_ERROR("Error creating table: {}", sqlite3_errmsg(db));
         exit(1);
     }
 }
@@ -45,7 +45,7 @@ void DatabaseManager::closeDatabase() {
         sqlite3_finalize(insertStmt);
         int rc = sqlite3_close(db);
         if (rc != SQLITE_OK) {
-            LOG_ERROR("Error closing SQLite database: {}", sqlite3_errmsg(db));
+            //LOG_ERROR("Error closing SQLite database: {}", sqlite3_errmsg(db));
         }
         db = nullptr; // Reset the pointer after closing
     }
@@ -58,7 +58,7 @@ void DatabaseManager::prepareStatements() {
         const char* insertSQL = "INSERT INTO detection_data (file_name, top, left, width, height, avgR, avgG, avgB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         int rc = sqlite3_prepare_v2(db, insertSQL, -1, &insertStmt, nullptr);
         if (rc != SQLITE_OK) {
-            LOG_ERROR("Error preparing insert statement: {}", sqlite3_errmsg(db));
+            //LOG_ERROR("Error preparing insert statement: {}", sqlite3_errmsg(db));
             exit(1);
         }
     }
@@ -78,7 +78,7 @@ void DatabaseManager::executeInsertStatement(const cv::Rect& rect, float avgR, f
     // Execute the statement
     int rc = sqlite3_step(insertStmt);
     if (rc != SQLITE_DONE) {
-        LOG_ERROR("Error executing insert statement: {}", sqlite3_errmsg(db));
+        //LOG_ERROR("Error executing insert statement: {}", sqlite3_errmsg(db));
     }
     // Reset the statement for reuse
     sqlite3_reset(insertStmt);

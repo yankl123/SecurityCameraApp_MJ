@@ -1,16 +1,11 @@
-#include <grpcpp/grpcpp.h>
 
-
-#include <opencv2/opencv.hpp>
-#include <queue>
 #include <iostream>
+#include <queue>
 #include <thread>
 #include "JQueue.h"
-
+#include <grpcpp/grpcpp.h>
 #include "video_service.pb.h"
 #include "video_service.grpc.pb.h"
-
-//#include "BackendProcessor.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -50,8 +45,6 @@ public:
         : server_address_(server_address) {}
 
     void run() {
-
-
         grpc::ServerBuilder builder;
         builder.AddListeningPort(server_address_, grpc::InsecureServerCredentials());
         builder.RegisterService(&service);
