@@ -1,7 +1,8 @@
 
 #include <thread>
+ #include "VideoServer.h"  
+
 #include "BackendProcessor.h"
-//#include "VideoServer.cpp"  
 #include "Logger/Logger.h"
 
 #ifdef _DEBUG
@@ -24,8 +25,8 @@ int main(int argc, char* argv[]) {
     std::string videoFileName = (lastSlash != std::string::npos) ? videoPath.substr(lastSlash + 1) : videoPath;
     BackendProcessor backendProcessor(outputCSV, outputDB, videoFileName);
     ////LOG_INFO("Starting program...");
-    //VideoServer server("0.0.0.0:50051");
-    //std::thread serverThread(&VideoServer::run, &server);
+    VideoServer server("0.0.0.0:50051");
+    std::thread serverThread(&VideoServer::run, &server);
     backendProcessor.start();
     ////LOG_INFO("Starting backend processing...");
  
