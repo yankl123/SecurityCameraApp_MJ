@@ -19,7 +19,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     set(gRPC_DIR "${GRPC_SRC_DIR}/lib/cmake/grpc")
     set(absl_DIR "${GRPC_SRC_DIR}/lib/cmake/absl")
     set(utf8_range_DIR "${GRPC_SRC_DIR}/lib/cmake/utf8_range") 
-    file(TO_CMAKE_PATH ${YOLO_PATH} YOLO_PATH )
+   # file(TO_CMAKE_PATH ${YOLO_PATH} YOLO_PATH )
 endif()
 
 option(WITH_TESTS "Enable build Gtest" OFF)

@@ -1,7 +1,8 @@
 
 #include <thread>
+ #include "VideoServer.h"  
+
 #include "BackendProcessor.h"
-//#include "VideoServer.cpp"  
 #include "Logger/Logger.h"
 
 #ifdef _DEBUG
