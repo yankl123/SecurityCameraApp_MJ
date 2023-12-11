@@ -30,3 +30,4 @@ grpc::Status VideoServer::VideoServiceImpl::SendFrame(grpc::ServerContext* conte
     std::cout << "Received frame #" << receivedFrameCount << std::endl;
     return grpc::Status::OK;
 }
+
