@@ -1,12 +1,12 @@
 #include "Detection.h"
-
+#include "BackendGlobalDef.h"
 // Constructor to initialize the YOLOv5 model and class names.
 Detection::Detection()
 {
     cout << "Initializing YOLOv5 model..." << endl;
 
     // Load the YOLOv5 model.
-    net = readNet("C:/Users/Moshe Sayada/Documents/repos/MobileyeBootcamp_ASO/ProjectKamatec/Backend/Backend/yolov5s.onnx");
+    net = readNet(YOLO_PATH);
 
     //cout << "Loading class names from 'coco.names'..." << endl;
 
@@ -26,7 +26,7 @@ vector<Mat> Detection::pre_process(Mat& input_image)
 
     // Convert the input image to a blob for model input.
     Mat blob;
-    blobFromImage(input_image, blob, 1. / 255., Size(INPUT_WIDTH, INPUT_HEIGHT), Scalar(), true, false);
+    blobFromImage(input_image, blob, 1. / 255., Size((int)INPUT_WIDTH, (int)INPUT_HEIGHT), Scalar(), true, false);
 
     // Set the input blob for the model.
     net.setInput(blob);
@@ -58,8 +58,8 @@ bool Detection::processDetection(const float* detectionData, const cv::Mat& inpu
     float carScore = detectionData[5 + 2]; // Car score is the 2nd element after confidence.
 
     // Calculate resizing factors based on the input image and model input size.
-    float x_factor = inputImage.cols / INPUT_WIDTH;
-    float y_factor = inputImage.rows / INPUT_HEIGHT;
+    double x_factor = inputImage.cols / INPUT_WIDTH;
+    double y_factor = inputImage.rows / INPUT_HEIGHT;
 
     // Discard low-confidence detections.
     if (confidence < CONFIDENCE_THRESHOLD || carScore <= SCORE_THRESHOLD)
@@ -102,8 +102,8 @@ std::vector<Rect> Detection::extractBoundingBoxes(const cv::Mat& inputImage, con
     std::vector<Rect> resultRects;
 
     // Resizing factor.
-    float xFactor = inputImage.cols / INPUT_WIDTH;
-    float yFactor = inputImage.rows / INPUT_HEIGHT;
+    double xFactor = inputImage.cols / INPUT_WIDTH;
+    double yFactor = inputImage.rows / INPUT_HEIGHT;
 
     const float* data = (float*)outputs[0].data;
 

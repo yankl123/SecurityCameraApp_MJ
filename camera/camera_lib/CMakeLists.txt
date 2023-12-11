@@ -45,6 +45,7 @@ target_include_directories(camera_lib PUBLIC
     ${OpenCV_INCLUDE_DIRS}
     ${CMAKE_SOURCE_DIR}/external_libs/spdlog-1.x/include/spdlog
     ${CMAKE_SOURCE_DIR}/external_libs/image_grpc
+    ${CMAKE_SOURCE_DIR}/external_libs/nlohmann_json
     ${Protobuf_INCLUDE_DIRS}
 )
 	

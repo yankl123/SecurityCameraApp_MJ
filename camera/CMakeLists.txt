@@ -2,6 +2,18 @@ project(camera)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
+set(JSON_CONTENT 
+  "{
+    \"VIDEO_PATH\" : \"\",
+    \"LOG_FILE_PATH\" : \"logs.txt\",
+    \"NUM_CHANNELS\" : 3,
+    \"SIGNIFICAT_IMG_CHANGE\" : 1,
+    \"SERVER_ADDRESS\" : \"localhost\",
+    \"PORT\" : \"50051\",
+    \"FRAMES_DIR\" : \"\"
+}" 
+)
+
 include(${CMAKE_SOURCE_DIR}/external_libs/image_grpc/common.cmake)  
 
 # Find Package
