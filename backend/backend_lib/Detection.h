@@ -15,19 +15,16 @@ using namespace cv;
 using namespace std;
 using namespace cv::dnn;
 
-// Constants.
-const float INPUT_WIDTH = 640.0;
-const float INPUT_HEIGHT = 640.0;
-const float SCORE_THRESHOLD = 0.5;
-const float NMS_THRESHOLD = 0.45;
-const float CONFIDENCE_THRESHOLD = 0.45;
+#define INPUT_WIDTH 640.0
+#define INPUT_HEIGHT 640.0
+#define SCORE_THRESHOLD 0.5
+#define NMS_THRESHOLD 0.45
+#define CONFIDENCE_THRESHOLD 0.45
 
 // Text parameters.
-const float FONT_SCALE = 0.7;
-const int FONT_FACE = FONT_HERSHEY_SIMPLEX;
-const int THICKNESS = 1;
-
- 
+#define FONT_SCALE 0.7
+#define FONT_FACE FONT_HERSHEY_SIMPLEX
+#define THICKNESS 1
 
 class Detection {
 

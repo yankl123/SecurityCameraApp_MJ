@@ -3,7 +3,6 @@ project(backend_lib)
 cmake_minimum_required(VERSION 3.10)
 
 include(${CMAKE_SOURCE_DIR}/external_libs/image_grpc/common.cmake)  
-
 # Find Package
 find_package(OpenCV REQUIRED)
 
@@ -17,7 +16,7 @@ file(GLOB SOURCES
     Database/*.cpp Database/*.hpp Database/*.h
 )
 file(GLOB Logger_Sources RELATIVE "Logger" 
-    *.cpp *.h *.hpp
+    *.cpp *.h *.hpp 
 )
 file(GLOB Database_Sources RELATIVE "Database" 
     *.cpp *.h *.hpp
@@ -28,7 +27,7 @@ add_library(${PROJECT_NAME} STATIC
     ${Logger_Sources}
     ${Database_Sources}
 )
-message(STATUS "******************* ${SOURCES}")
+
 target_link_libraries(${PROJECT_NAME} PUBLIC
     sqlite
     spdlog::spdlog
@@ -58,9 +57,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_SOURCE_DIR}/backend/sqlite
     ${CMAKE_SOURCE_DIR}/external_libs/spdlog-1.x/include/spdlog
     ${CMAKE_SOURCE_DIR}/external_libs/image_grpc
+    ${CMAKE_SOURCE_DIR}/external_libs/nlohmann_json
     ${CMAKE_CURRENT_SOURCE_DIR}/Logger
     ${CMAKE_CURRENT_SOURCE_DIR}/Database
 )
 
-target_compile_definitions(backend_lib PRIVATE YOLO_ONNX_PATH=${YOLO_PATH})  	
 

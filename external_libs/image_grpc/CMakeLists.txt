@@ -15,7 +15,7 @@ set(image_proto_hdrs "${CMAKE_CURRENT_SOURCE_DIR}/video_service.pb.h")
 set(image_grpc_srcs "${CMAKE_CURRENT_SOURCE_DIR}/video_service.grpc.pb.cc")
 set(image_grpc_hdrs "${CMAKE_CURRENT_SOURCE_DIR}/video_service.grpc.pb.h")
 add_custom_command(
-      OUTPUT "${image_grpc_srcs}" "${image_grpc_hdrs}" "${image_proto_srcs}" "${image_proto_hdrs}"
+      OUTPUT "${image_proto_srcs}" "${image_proto_hdrs}" "${image_grpc_srcs}" "${image_grpc_hdrs}" 
       COMMAND ${_PROTOBUF_PROTOC}
       ARGS --grpc_out "${CMAKE_CURRENT_SOURCE_DIR}"
         --cpp_out "${CMAKE_CURRENT_SOURCE_DIR}"

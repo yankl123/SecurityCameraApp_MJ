@@ -2,6 +2,19 @@ project(backend)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
+set(JSON_CONTENT 
+  "{
+    \"VIDEO_PATH\" : \"\",
+    \"LOG_FILE_PATH\" : \"logs.txt\",
+    \"NUM_CHANNELS\" : 3,
+    \"SIGNIFICAT_IMG_CHANGE\" : 1,
+    \"SERVER_ADDRESS\" : \"localhost\",
+    \"PORT\" : \"50051\",
+    \"YOLO_PATH\" : \"C:/SecurityCameraApp_MJ/backend/Yolo/yolov5s.onnx\",
+    \"DB_PATH\" : \"./output.db\"
+}" 
+)
+
 # Find Package
 find_package(OpenCV REQUIRED)
 
@@ -27,6 +40,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/backend_lib
 )
 # Write the JSON content to a file
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/Yolo/coco.names"  DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/settings.json" "${JSON_CONTENT}")
 
 
